@@ -42,9 +42,9 @@ run().catch(console.dir);
 
 // app create home
 app.get('/', (req, res) => {
-    res.send("Coffee Server is getting hotter")
+    res.send("User management Server is getting hotter")
 })
 
 app.listen(port, () => {
-    console.log(`Coffee server is running port ${port}`);
+    console.log(`User management server is running port ${port}`);
 })
