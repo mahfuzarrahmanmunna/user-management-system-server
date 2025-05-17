@@ -28,7 +28,16 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
       await client.connect();
+      // User Collection
+      const usersCollections = client.db('usersDB').collection("users")
       
+      // users get method for
+      app.get('/users', async (req, res) => {
+          const cursor = usersCollections.find()
+          const result = await cursor.toArray();
+          res.send(result)
+      })
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
@@ -42,7 +51,7 @@ run().catch(console.dir);
 
 // app create home
 app.get('/', (req, res) => {
-    res.send("User management Server is getting hotter")
+    res.send("User management Server is getting running")
 })
 
 app.listen(port, () => {
